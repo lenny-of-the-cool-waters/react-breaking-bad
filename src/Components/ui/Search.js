@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
 
+//Arrow function search component 
 const Search = ( {getQuery} ) => {
+    //state declaration. 
     const [text, setText] = useState('')
+
+    //event handler in case of changes to input value
     const handleChange = (q) => {
         setText(q)
         getQuery(q)

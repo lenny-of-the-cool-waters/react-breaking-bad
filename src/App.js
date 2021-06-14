@@ -6,9 +6,9 @@ import Search from './Components/ui/Search'
 import './App.css'
 
 function App() {
-  const [items, setItems] = useState([])
-  const [isLoading, setIsLoading] = useState(true) 
-  const [query, setQuery] = useState('')
+  const [items, setItems] = useState([]) //state containing character info
+  const [isLoading, setIsLoading] = useState(true) //has data been fetched from api
+  const [query, setQuery] = useState('') //tied to search component and used to search for specific characters
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -18,12 +18,12 @@ function App() {
     }
 
     fetchItems()
-  }, [query])
+  }, [query] /*array of dependencies, when changed effect runs again*/) 
 
   return (
     <div className="container">
       <Header />
-      <Search getQuery={(q) => setQuery(q)}/>
+      <Search getQuery={(q) => setQuery(q) /*Update query using props in Search component */}/>
       <CharacterGrid isLoading={isLoading} items={items}/>
     </div>
   );
